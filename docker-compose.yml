@@ -1,0 +1,21 @@
+services:
+  database:
+    image: postgres:17-alpine
+    container_name: salesflow_database
+    restart: always
+    environment:
+      POSTGRES_DB: salesflow
+      POSTGRES_USER: salesflow
+      POSTGRES_PASSWORD: salesflow_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - salesflow_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U salesflow -d salesflow"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  salesflow_data:
