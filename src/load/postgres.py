@@ -29,22 +29,28 @@ def upsert_dataframe(connection, table, dataframe, conflict_columns):
 
     return len(records)
 
-def load_carts(carts_df, products_df):
+def load_carts(carts_df, products_df, connection=None):
     metadata.create_all(engine)
 
-    with engine.begin() as connection:
+    def execute_load(conn):
         carts_loaded = upsert_dataframe(
-            connection,
+            conn,
             carts_table,
             carts_df,
             ["id"],
         )
 
         products_loaded = upsert_dataframe(
-            connection,
+            conn,
             cart_products_table,
             products_df,
             ["cart_id", "product_id"],
         )
 
-    return carts_loaded, products_loaded
+        return carts_loaded, products_loaded
+
+    if connection is not None:
+        return execute_load(connection)
+
+    with engine.begin() as connection:
+        return execute_load(connection)
