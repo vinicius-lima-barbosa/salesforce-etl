@@ -63,3 +63,42 @@ def test_transform_carts_preserves_relationship(sample_carts):
     _, products_df = transform_carts(sample_carts)
 
     assert all(products_df["cart_id"] == 1)
+
+def test_transform_carts_aggregates_duplicate_products():
+    carts = [
+        {
+            "id": 1,
+            "userId": 10,
+            "total": 200,
+            "discountedTotal": 180,
+            "totalProducts": 2,
+            "totalQuantity": 3,
+            "products": [
+                {
+                    "id": 100,
+                    "title": "Product A",
+                    "price": 50,
+                    "quantity": 1,
+                    "total": 50,
+                    "discountPercentage": 10,
+                    "discountedTotal": 45,
+                },
+                {
+                    "id": 100,
+                    "title": "Product A",
+                    "price": 50,
+                    "quantity": 2,
+                    "total": 100,
+                    "discountPercentage": 10,
+                    "discountedTotal": 90,
+                },
+            ],
+        }
+    ]
+
+    _, products_df = transform_carts(carts)
+
+    assert len(products_df) == 1
+    assert products_df.iloc[0]["quantity"] == 3
+    assert products_df.iloc[0]["total"] == 150
+    assert products_df.iloc[0]["discounted_total"] == 135
