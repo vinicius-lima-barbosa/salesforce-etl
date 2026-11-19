@@ -21,7 +21,7 @@ carts_table = Table(
     Column("total_quantity", Integer, nullable=False),
 )
 
-cart_products_tabel = Table(
+cart_products_table = Table(
     "cart_products",
     metadata,
     Column(

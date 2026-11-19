@@ -4,7 +4,7 @@ from config.database import engine
 from load.schema import (
     metadata,
     carts_table,
-    cart_products_tabel,
+    cart_products_table,
 )
 
 def upsert_dataframe(connection, table, dataframe, conflict_columns):
@@ -42,7 +42,7 @@ def load_carts(carts_df, products_df):
 
         products_loaded = upsert_dataframe(
             connection,
-            cart_products_tabel,
+            cart_products_table,
             products_df,
             ["cart_id", "product_id"],
         )
