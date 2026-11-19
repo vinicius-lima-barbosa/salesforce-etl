@@ -6,11 +6,58 @@ O projeto utiliza dados da DummyJSON e tem como objetivo demonstrar um fluxo sim
 
 # Fluxo
 
-1. **Extração:** coleta dos dados de carrinhos e produtos por meio da API DummyJSON.
-2. **Validação:** verifica se os dados recebidos possuem a estrutura e os campos esperados.
-3. **Transformação:** organiza e transforma os dados em DataFrames utilizando Pandas.
-4. **Carga:** armazena os dados no PostgreSQL, atualizando registros existentes quando necessário.
-5. **Análise:** disponibiliza consultas SQL para analisar vendas, produtos e clientes.
+```mermaid
+flowchart TD
+    A[DummyJSON API] --> B[Extração]
+    B --> C[Validação]
+    C --> D[Transformação - Pandas]
+    D --> E[Carga - PostgreSQL]
+    E --> F[Análises SQL]
+```
+
+### 3. Visualização
+
+<box border radius="xl" padding=3 gap=2>
+  <text weight="medium" textAlign="center">SalesFlow ETL</text>
+  <box background="#E0F2FE" theme="light" radius="lg" padding=3 align=center>
+    <text color="#075985" weight="medium">DummyJSON API</text>
+    <caption color="#075985">Fonte dos dados</caption>
+  </box>
+  <box align=center>
+    <icon name="arrow-down" color="secondary" size="xl"/>
+  </box>
+  <box background="#E0F2FE" theme="light" radius="lg" padding=3 align=center>
+    <text color="#075985" weight="medium">Extração</text>
+  </box>
+  <box align=center>
+    <icon name="arrow-down" color="secondary" size="xl"/>
+  </box>
+  <box background="#FEF3C7" theme="light" radius="lg" padding=3 align=center>
+    <text color="#92400E" weight="medium">Validação</text>
+  </box>
+  <box align=center>
+    <icon name="arrow-down" color="secondary" size="xl"/>
+  </box>
+  <box background="#FEF3C7" theme="light" radius="lg" padding=3 align=center>
+    <text color="#92400E" weight="medium">Transformação</text>
+    <caption color="#92400E">Pandas</caption>
+  </box>
+  <box align=center>
+    <icon name="arrow-down" color="secondary" size="xl"/>
+  </box>
+  <box background="#DCFCE7" theme="light" radius="lg" padding=3 align=center>
+    <text color="#166534" weight="medium">Carga</text>
+    <caption color="#166534">PostgreSQL</caption>
+  </box>
+  <box align=center>
+    <icon name="arrow-down" color="secondary" size="xl"/>
+  </box>
+  <box background="#DCFCE7" theme="light" radius="lg" padding=3 align=center>
+    <text color="#166534" weight="medium">Análises SQL</text>
+  </box>
+</box>
+
+<caption>Representação ilustrativa do fluxo ETL.</caption>
 
 ## Tecnologias
 
@@ -22,6 +69,12 @@ O projeto utiliza dados da DummyJSON e tem como objetivo demonstrar um fluxo sim
 - Pytest
 
 ## Execução
+
+Suba o banco de dados com:
+
+```bash
+docker compose up -d
+```
 
 Configure o ambiente python com:
 
