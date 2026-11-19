@@ -1,6 +1,7 @@
 from extract.carts import extract_carts
 from validate.carts import validate_carts
 from transform.carts import transform_carts
+from load.postgres import load_carts
 
 def run_pipeline():
     carts = extract_carts()
@@ -14,4 +15,8 @@ def run_pipeline():
     print(f" - Carrinhos: {len(carts_df)}")
     print(f" - Produtos: {len(products_df)}")
 
-    return carts_df, products_df
+    carts_loaded, products_loaded = load_carts(carts_df, products_df)
+
+    print("Carregamento concluído.")
+    print(f"- Carrinhos carregados: {carts_loaded}")
+    print(f"- Produtos carregados: {products_loaded}")
