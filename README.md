@@ -15,50 +15,6 @@ flowchart TD
     E --> F[Análises SQL]
 ```
 
-### 3. Visualização
-
-<box border radius="xl" padding=3 gap=2>
-  <text weight="medium" textAlign="center">SalesFlow ETL</text>
-  <box background="#E0F2FE" theme="light" radius="lg" padding=3 align=center>
-    <text color="#075985" weight="medium">DummyJSON API</text>
-    <caption color="#075985">Fonte dos dados</caption>
-  </box>
-  <box align=center>
-    <icon name="arrow-down" color="secondary" size="xl"/>
-  </box>
-  <box background="#E0F2FE" theme="light" radius="lg" padding=3 align=center>
-    <text color="#075985" weight="medium">Extração</text>
-  </box>
-  <box align=center>
-    <icon name="arrow-down" color="secondary" size="xl"/>
-  </box>
-  <box background="#FEF3C7" theme="light" radius="lg" padding=3 align=center>
-    <text color="#92400E" weight="medium">Validação</text>
-  </box>
-  <box align=center>
-    <icon name="arrow-down" color="secondary" size="xl"/>
-  </box>
-  <box background="#FEF3C7" theme="light" radius="lg" padding=3 align=center>
-    <text color="#92400E" weight="medium">Transformação</text>
-    <caption color="#92400E">Pandas</caption>
-  </box>
-  <box align=center>
-    <icon name="arrow-down" color="secondary" size="xl"/>
-  </box>
-  <box background="#DCFCE7" theme="light" radius="lg" padding=3 align=center>
-    <text color="#166534" weight="medium">Carga</text>
-    <caption color="#166534">PostgreSQL</caption>
-  </box>
-  <box align=center>
-    <icon name="arrow-down" color="secondary" size="xl"/>
-  </box>
-  <box background="#DCFCE7" theme="light" radius="lg" padding=3 align=center>
-    <text color="#166534" weight="medium">Análises SQL</text>
-  </box>
-</box>
-
-<caption>Representação ilustrativa do fluxo ETL.</caption>
-
 ## Tecnologias
 
 - Python
